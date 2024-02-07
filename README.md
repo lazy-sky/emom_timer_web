@@ -20,6 +20,7 @@
   - Remix
     - [Docs](https://remix.run/docs/en/main/start/quickstart#installation)
   - Vite
+   - [Docs](https://vitejs.dev/guide/)
 - PWA를 적용해본다.
 - 테스트 코드를 작성한다.  
 - 웹뷰를 사용해 모바일 앱으로 배포해본다.

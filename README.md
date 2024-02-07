@@ -17,6 +17,9 @@
 
 - 기존에 시도하지 않았던 새로운 방법으로 프로젝트를 세팅해본다.
   - Next.js 14
+  - Remix
+    - [Docs](https://remix.run/docs/en/main/start/quickstart#installation)
+  - Vite
 - PWA를 적용해본다.
 - 테스트 코드를 작성한다.  
 - 웹뷰를 사용해 모바일 앱으로 배포해본다.

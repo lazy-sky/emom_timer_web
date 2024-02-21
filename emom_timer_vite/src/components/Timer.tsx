@@ -2,9 +2,10 @@ import { useTimer } from 'react-timer-hook';
 
 interface TimerProps {
   expiryTimestamp: Date;
+  onExpireTime: () => void; 
 }
 
-const Timer = ({ expiryTimestamp }: TimerProps) => {
+const Timer = ({ expiryTimestamp, onExpireTime }: TimerProps) => {
   const {
     // totalSeconds,
     seconds,
@@ -16,18 +17,27 @@ const Timer = ({ expiryTimestamp }: TimerProps) => {
     pause,
     resume,
     restart,
-  } = useTimer({ expiryTimestamp, onExpire: () => console.warn('onExpire called') });
+  } = useTimer({ expiryTimestamp, onExpire: () => {
+    console.log('onExpire called')
+    onExpireTime();
 
-  const handleRestartClick = () => {
     const time = new Date();
-    time.setSeconds(time.getSeconds() + 300);
-    restart(time);
-  }
+    time.setSeconds(time.getSeconds() + 3);
+    
+    setTimeout(() => {
+      restart(time);
+    })
+  }});
+
 
   return (
     <div style={{textAlign: 'center'}}>
       <div style={{fontSize: '100px'}}>
-        <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
+        <span>{hours >= 10 ? hours: `0${hours}`}</span>
+        :
+        <span>{minutes >= 10 ? minutes: `0${minutes}`}</span>
+        :
+        <span>{seconds >= 10 ? seconds: `0${seconds}`}</span>
       </div>
       <p>{isRunning ? 'Running' : 'Not running'}</p>
       <div style={{
@@ -39,7 +49,6 @@ const Timer = ({ expiryTimestamp }: TimerProps) => {
         <button onClick={start}>Start</button>
         <button onClick={pause}>Pause</button>
         <button onClick={resume}>Resume</button>
-        <button onClick={handleRestartClick}>Restart</button>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import './App.css'
 
 function App() {
   const time = new Date();
-  time.setSeconds(time.getSeconds() + 3); 
+  time.setSeconds(time.getSeconds() + 60); 
   const [round , setRound] = useState(1);
 
   const onExpireTime = () => {
@@ -16,6 +16,8 @@ function App() {
   const handleResetRoundClick = () => {
     setRound(1);
   }
+
+  // start the countdown sound when 10 seconds left
 
   return (
     <>

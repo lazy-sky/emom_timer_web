@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTimer } from 'react-timer-hook';
 
 interface TimerProps {
@@ -22,13 +23,16 @@ const Timer = ({ expiryTimestamp, onExpireTime }: TimerProps) => {
     onExpireTime();
 
     const time = new Date();
-    time.setSeconds(time.getSeconds() + 3);
+    time.setSeconds(time.getSeconds() + 60);
     
     setTimeout(() => {
       restart(time);
     })
   }});
 
+  useEffect(() => {
+    pause();
+  }, [pause])
 
   return (
     <div style={{textAlign: 'center'}}>

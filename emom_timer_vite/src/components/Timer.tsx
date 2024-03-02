@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { useTimer } from 'react-timer-hook';
+import countdown from '../assets/sound/countdown_5s.mp3';
+
 
 interface TimerProps {
   expiryTimestamp: Date;
@@ -31,8 +33,11 @@ const Timer = ({ expiryTimestamp, onExpireTime }: TimerProps) => {
   }});
 
   useEffect(() => {
-    pause();
-  }, [pause])
+    if (isRunning && seconds === 5) {
+      const audio = new Audio(countdown);
+      audio.play(); 
+    }
+  }, [isRunning, seconds])
 
   return (
     <div style={{textAlign: 'center'}}>

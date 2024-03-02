@@ -1,7 +1,5 @@
 import { useState } from 'react'
-
 import Timer from './components/Timer';
-
 import './App.css'
 
 function App() {
@@ -16,8 +14,6 @@ function App() {
   const handleResetRoundClick = () => {
     setRound(1);
   }
-
-  // start the countdown sound when 10 seconds left
 
   return (
     <>
